@@ -1,0 +1,11 @@
+{
+  "name": "Hazem",
+  "Age": 21,
+  "phone": {
+    "type": "intl",
+    "number": ",+21625969655"
+  },
+  "email": {
+    "hide": "yes"
+  }
+}

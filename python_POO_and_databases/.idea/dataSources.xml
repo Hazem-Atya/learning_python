@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="sql1" uuid="ab34f7d5-685b-4121-b803-22985b065c33">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\PycharmProjects\python_POO_and_databases\sql1.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="courses" uuid="4679ba1c-913b-4b9e-a0d9-27cb85e05f34">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\PycharmProjects\python_POO_and_databases\courses.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
