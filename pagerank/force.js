@@ -1,3 +1,5 @@
+console.log("hiiiiiii");
+
 var width = 600,
     height = 600;
 
@@ -23,6 +25,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("height", height);
 
 function loadData(json) {
+;
   force
       .nodes(json.nodes)
       .links(json.links);
@@ -46,9 +49,9 @@ function loadData(json) {
       .attr("class", "node")
       .attr("r", function(d) { return getrank(d.rank); } )
       .style("fill", function(d) { return getcolor(d.rank); })
-      .on("dblclick",function(d) { 
-            if ( confirm('Do you want to open '+d.url) ) 
-                window.open(d.url,'_new',''); 
+      .on("dblclick",function(d) {
+            if ( confirm('Do you want to open '+d.url) )
+                window.open(d.url,'_new','');
             d3.event.stopPropagation();
         })
       .call(force.drag);
@@ -67,4 +70,5 @@ function loadData(json) {
   });
 
 }
+console.log(spiderJson["nodes"].length);
 loadData(spiderJson);

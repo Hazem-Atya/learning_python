@@ -32,6 +32,7 @@ else :
     starturl = input('Enter web url or enter: ')
     if ( len(starturl) < 1 ) : starturl = 'http://www.dr-chuck.com/'
     if ( starturl.endswith('/') ) : starturl = starturl[:-1]
+   # print("heey starturl=",starturl);
     web = starturl
     if ( starturl.endswith('.htm') or starturl.endswith('.html') ) :
         pos = starturl.rfind('/')
@@ -40,7 +41,7 @@ else :
     if ( len(web) > 1 ) :
         cur.execute('INSERT OR IGNORE INTO Webs (url) VALUES ( ? )', ( web, ) )
         cur.execute('INSERT OR IGNORE INTO Pages (url, html, new_rank) VALUES ( ?, NULL, 1.0 )', ( starturl, ) )
-        conn.commit()
+       # conn.commit()
 
 # Get the current webs
 cur.execute('''SELECT url FROM Webs''')
@@ -84,7 +85,7 @@ while True:
         if 'text/html' != document.info().get_content_type() :
             print("Ignore non text/html page")
             cur.execute('DELETE FROM Pages WHERE url=?', ( url, ) )
-            conn.commit()
+            #conn.commit()
             continue
 
         print('('+str(len(html))+')', end=' ')
@@ -97,12 +98,12 @@ while True:
     except:
         print("Unable to retrieve or parse page")
         cur.execute('UPDATE Pages SET error=-1 WHERE url=?', (url, ) )
-        conn.commit()
+      #  conn.commit()
         continue
 
     cur.execute('INSERT OR IGNORE INTO Pages (url, html, new_rank) VALUES ( ?, NULL, 1.0 )', ( url, ) )
     cur.execute('UPDATE Pages SET html=? WHERE url=?', (memoryview(html), url ) )
-    conn.commit()
+   # conn.commit()
 
     # Retrieve all of the anchor tags
     tags = soup('a')
@@ -131,7 +132,7 @@ while True:
 
         cur.execute('INSERT OR IGNORE INTO Pages (url, html, new_rank) VALUES ( ?, NULL, 1.0 )', ( href, ) )
         count = count + 1
-        conn.commit()
+        #conn.commit()
 
         cur.execute('SELECT id FROM Pages WHERE url=? LIMIT 1', ( href, ))
         try:
@@ -145,5 +146,5 @@ while True:
 
 
     print(count)
-
+conn.commit()
 cur.close()
